@@ -1,6 +1,7 @@
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.regex.*;
 
 /**
  * 正则表达式
@@ -81,11 +82,35 @@ public class RegularExpression {
 		Pattern pattern=Pattern.compile("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}");
 		Matcher matcher=pattern.matcher("192.168.0.1");
 		p(matcher.matches());
+		
+	}
+	
+	
+	/*
+	public static void fontAttri(){
+		String fonfattr="<font size=\"8\">";
+		Pattern fontP=Pattern.compile("<\\s*font\\s+([^>]*)\\s*>");
+		Pattern attrP=Pattern.compile("([a-z]+)/s*=/s*\"([^\"]+)\"");
+		Matcher matcher=fontP.matcher(fonfattr);
+		p(matcher.matches());
+	}
+	*/
+	
+	/*
+	*匹配邮箱
+    *CASE_INSENSITIVE表示不分大小写
+	*其中\w匹配任意字符包括下划线
+	*/
+	public static void matchEmail(){
+		String mail="wxp2014android@163.com";
+		Pattern pattern=Pattern.compile("[\\w\\.\\-]+@([\\w\\-]+\\.)+[\\w\\-]+",Pattern.CASE_INSENSITIVE);
+        Matcher matcher=pattern.matcher(mail);
+		p(matcher.matches());
 	}
 	public static void main(String[] args) {
 
-		matchIP();
-
+		//matchIP();
+        matchEmail();
 	}
 
 }
