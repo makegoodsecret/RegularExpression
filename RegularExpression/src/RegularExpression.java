@@ -1,4 +1,3 @@
-package rx;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -17,6 +16,8 @@ public class RegularExpression {
 	/**
 	 * 匹配以某个字符串开头，任意字符串结尾的一个字符串
 	 * 匹配规则^start.*
+	 * 其中.号匹配除\r和\n之外的任何单个字符
+	 * 其中*号匹配之前的表达式零次或多次
 	 */
 	public static void startWith() {
 		boolean flag = false;
@@ -70,9 +71,20 @@ public class RegularExpression {
 		matcher.appendTail(sbr);
 		System.out.println(sbr.toString());
 	}
+	
+	/**
+	*匹配IP地址
+	*ip地址由四个字节构成,每个字节的值在0到255之间
+	*其中\d等价于[0-9],匹配一个数字字符
+	*/
+	public static void matchIP(){
+		Pattern pattern=Pattern.compile("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}");
+		Matcher matcher=pattern.matcher("192.168.0.1");
+		p(matcher.matches());
+	}
 	public static void main(String[] args) {
-		replaceAll();
-		replaceAllChar();
+
+		matchIP();
 
 	}
 
